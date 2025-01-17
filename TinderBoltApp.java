@@ -10,11 +10,11 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import java.util.ArrayList;
-
+// TELEGRAM_BOT_NAME = System.getenv(" TELEGRAM_BOT_NAME")
 public class TinderBoltApp extends MultiSessionTelegramBot {
     public static final String TELEGRAM_BOT_NAME = "The_helper_for_history_bot"; //TODO: добавь имя бота в кавычках
-    public static final String TELEGRAM_BOT_TOKEN = "7276003389:AAEXwiEAjldMRWKjQ87AMYnapupUcCzHauo"; //TODO: добавь токен бота в кавычках
-    public static final String OPEN_AI_TOKEN = "gpt:y8HQgXidYWEPQ52jBuwnJFkblB3T8AScAHOTiNP46pG97Qae"; //TODO: добавь токен ChatGPT в кавычках
+    public static final String TELEGRAM_BOT_TOKEN = "7276003389:AAEXwiEAjldMRWKjQ87AMYnapupUcCzHauo";
+    public static final String OPEN_AI_TOKEN = "gpt:y8HQgXidYWEPQ52jBuwnJFkblB3T8AScAHOTiNP46pG97Qae"; 
 
     private ChatGPTService chatGPT = new ChatGPTService(OPEN_AI_TOKEN);
     private DialogMode currenMode = null;
@@ -23,9 +23,9 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         super(TELEGRAM_BOT_NAME, TELEGRAM_BOT_TOKEN);
     }
 
-    @Override
+    
     public void onUpdateEventReceived(Update update) {
-        //TODO: основной функционал бота будем писать здесь
+        
         String nessage = getMessageText();
 //команда start
         if (nessage.equals("/start")) {
