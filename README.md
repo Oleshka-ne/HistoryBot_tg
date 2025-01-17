@@ -5,4 +5,4 @@
 # Технологии, которые использовались:
 Основные Библиотеки(Java): Telegram Bots API(создание тг бота), Open AI(для вызова чата GPT)
 Платформа: IntelliJ IDEA Community Edition 2024
-ОС компьютера: Windows 10
+
