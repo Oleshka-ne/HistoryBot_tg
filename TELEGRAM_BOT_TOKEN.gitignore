@@ -1,1 +1,3 @@
 TELEGRAM_BOT_TOKEN.env = "7276003389:AAEXwiEAjldMRWKjQ87AMYnapupUcCzHauo"
+TELEGRAM_BOT_NAME.env = "The_helper_for_history_bot"
+OPEN_AI_TOKEN.env = "gpt:y8HQgXidYWEPQ52jBuwnJFkblB3T8AScAHOTiNP46pG97Qae"
