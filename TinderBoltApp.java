@@ -48,7 +48,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         }
 
         if (currenMode == DialogMode.GPT){
-            String prompt = loadPrompt("gpt");
+            String prompt = loadPrompt("year");
             Message nsg = sendTextMessage("/Подождите gpt набирает текст/");
             String answer = chatGPT.sendMessage(prompt, nessage);
             updateTextMessage(nsg, answer);
@@ -65,7 +65,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
 
 
         if (currenMode == DialogMode.OPENER){
-            String prompt = loadPrompt("opener");
+            String prompt = loadPrompt("terms");
             Message nsg = sendTextMessage("/Подождите gpt набирает текст/");
             String answer = chatGPT.sendMessage(prompt, nessage);
             updateTextMessage(nsg, answer);
@@ -82,12 +82,13 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
 
 
         if (currenMode == DialogMode.DATE){
-            String prompt = loadPrompt("date");
+            String prompt = loadPrompt("understand");
             Message nsg = sendTextMessage("/Подождите gpt набирает текст/");
             String answer = chatGPT.sendMessage(prompt, nessage);
             updateTextMessage(nsg, answer);
             return;
         }
+        //команда question
         if (nessage.equals("/question")){
             currenMode = DialogMode.PROFILE;
             sendPhotoMessage("profile");
@@ -98,13 +99,13 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
 
 
         if (currenMode == DialogMode.PROFILE){
-            String prompt = loadPrompt("profile");
+            String prompt = loadPrompt("question");
             Message nsg = sendTextMessage("/Подождите gpt набирает текст/");
             String answer = chatGPT.sendMessage(prompt, nessage);
             updateTextMessage(nsg, answer);
             return;
         }
-
+//команда matches
         if (nessage.equals("/matches")){
             currenMode = DialogMode.MESSAGE;
             sendPhotoMessage("machs");
