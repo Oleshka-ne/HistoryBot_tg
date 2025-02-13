@@ -34,7 +34,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
             String text = loadMessage("main");
             sendTextMessage(text);
 
-            showMainMenu("Начало всех начал", "/start", "Выберете соответсви", "/matches", "Вопросы по теме история", "/question", "Напиши термин", "/terms", "Опиши события", "/understand", "Напиши интересующий тебе год", "/year");
+            showMainMenu("Начало всех начал", "/start", "Выберете соответсвие", "/matches", "Вопросы по теме история", "/question", "Напиши термин", "/terms", "Опиши события", "/understand", "Напиши интересующий тебе год", "/year");
             return;
         }
 
@@ -56,7 +56,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         }
 //команда terms
         if (nessage.equals("/terms")){
-            currenMode = DialogMode.OPENER;
+            currenMode = DialogMode.TERMS;
             sendPhotoMessage("terms");
             String text = loadMessage("opener");
             sendTextMessage(text);
@@ -64,7 +64,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         }
 
 
-        if (currenMode == DialogMode.OPENER){
+        if (currenMode == DialogMode.TERMS){
             String prompt = loadPrompt("terms");
             Message nsg = sendTextMessage("/Подождите gpt набирает текст/");
             String answer = chatGPT.sendMessage(prompt, nessage);
@@ -73,7 +73,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         }
 //команда understand
         if (nessage.equals("/understand")){
-            currenMode = DialogMode.DATE;
+            currenMode = DialogMode.UNDERSTAND;
             sendPhotoMessage("understand");
             String text = loadMessage("date");
             sendTextMessage(text);
@@ -81,7 +81,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         }
 
 
-        if (currenMode == DialogMode.DATE){
+        if (currenMode == DialogMode.UNDERSTAND){
             String prompt = loadPrompt("understand");
             Message nsg = sendTextMessage("/Подождите gpt набирает текст/");
             String answer = chatGPT.sendMessage(prompt, nessage);
@@ -90,7 +90,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         }
         //команда question
         if (nessage.equals("/question")){
-            currenMode = DialogMode.PROFILE;
+            currenMode = DialogMode.QUESTION;
             sendPhotoMessage("profile");
             String text = loadMessage("profile");
             sendTextMessage(text);
@@ -98,7 +98,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         }
 
 
-        if (currenMode == DialogMode.PROFILE){
+        if (currenMode == DialogMode.QUESTION){
             String prompt = loadPrompt("question");
             Message nsg = sendTextMessage("/Подождите gpt набирает текст/");
             String answer = chatGPT.sendMessage(prompt, nessage);
@@ -107,7 +107,7 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         }
 //команда matches
         if (nessage.equals("/matches")){
-            currenMode = DialogMode.MESSAGE;
+            currenMode = DialogMode.MATCHES;
             sendPhotoMessage("machs");
             String text = loadMessage("message");
             sendTextMessage(text);
@@ -115,8 +115,25 @@ public class TinderBoltApp extends MultiSessionTelegramBot {
         }
 
 
-        if (currenMode == DialogMode.MESSAGE){
+        if (currenMode == DialogMode.MATCHES){
             String prompt = loadPrompt("machs");
+            Message nsg = sendTextMessage("/Подождите gpt набирает текст/");
+            String answer = chatGPT.sendMessage(prompt, nessage);
+            updateTextMessage(nsg, answer);
+            return;
+        }
+        //команда gifts
+        if (nessage.equals("/gifts")){
+            currenMode = DialogMode.GIFTS;
+            sendPhotoMessage("gifts");
+            String text = loadMessage("gifts");
+            sendTextMessage(text);
+            return;
+        }
+
+
+        if (currenMode == DialogMode.GIFTS){
+            String prompt = loadPrompt("gifts");
             Message nsg = sendTextMessage("/Подождите gpt набирает текст/");
             String answer = chatGPT.sendMessage(prompt, nessage);
             updateTextMessage(nsg, answer);
